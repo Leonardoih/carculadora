@@ -4,6 +4,7 @@ import Boton from './componetes/Boton';
 import Pantalla from './componetes/Pantalla';
 import BotonClear from './componetes/BotonClear';
 import { useState } from 'react';
+import { evaluate } from 'mathjs';
 
 function App() {
 	const [input, setInput] = useState('');
@@ -12,9 +13,13 @@ function App() {
 		setInput(input + numero);
 	};
 
-	const Clear =()=>{
-		setInput ("")
-	}
+	const Clear = () => {
+		setInput('');
+	};
+
+	const calcularResultado = () => {
+		setInput(evaluate(input));
+	};
 	return (
 		<div className='App'>
 			<div className='freecodecamp-logo-contenedor'>
@@ -34,7 +39,7 @@ function App() {
 				</div>
 				<div className='fila'>
 					<Boton manejarClic={agregaerInput}>4</Boton>
-					<Boton manejarClic={agregaerInput}> 5</Boton>
+					<Boton manejarClic={agregaerInput}>5</Boton>
 					<Boton manejarClic={agregaerInput}>6</Boton>
 					<Boton manejarClic={agregaerInput}>-</Boton>
 				</div>
@@ -45,14 +50,13 @@ function App() {
 					<Boton manejarClic={agregaerInput}>*</Boton>
 				</div>
 				<div className='fila'>
-					<Boton manejarClic={agregaerInput}>=</Boton>
+					<Boton manejarClic={calcularResultado}>=</Boton>
 					<Boton manejarClic={agregaerInput}>0</Boton>
 					<Boton manejarClic={agregaerInput}>.</Boton>
 					<Boton manejarClic={agregaerInput}>/</Boton>
 				</div>
 				<div className='fila'>
-					<BotonClear manejarClear={Clear}>Clear
-					</BotonClear>
+					<BotonClear manejarClear={Clear}>Clear</BotonClear>
 				</div>
 			</div>
 		</div>
