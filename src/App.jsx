@@ -1,7 +1,20 @@
 import './App.css';
 import freeCodeCampLogo from './imagenes/freecodecamp-logo.png';
 import Boton from './componetes/Boton';
+import Pantalla from './componetes/Pantalla';
+import BotonClear from './componetes/BotonClear';
+import { useState } from 'react';
+
 function App() {
+	const [input, setInput] = useState('');
+
+	const agregaerInput = (numero) => {
+		setInput(input + numero);
+	};
+
+	const Clear =()=>{
+		setInput ("")
+	}
 	return (
 		<div className='App'>
 			<div className='freecodecamp-logo-contenedor'>
@@ -12,31 +25,35 @@ function App() {
 				/>
 			</div>
 			<div className='contenedor-calculadora'>
+				<Pantalla input={input} />
 				<div className='fila'>
-					<Boton>1</Boton>
-					<Boton>2</Boton>
-					<Boton>3</Boton>
-					<Boton>+</Boton>
+					<Boton manejarClic={agregaerInput}>1</Boton>
+					<Boton manejarClic={agregaerInput}>2</Boton>
+					<Boton manejarClic={agregaerInput}>3</Boton>
+					<Boton manejarClic={agregaerInput}>+</Boton>
 				</div>
 				<div className='fila'>
-					<Boton>4</Boton>
-					<Boton>5</Boton>
-					<Boton>6</Boton>
-					<Boton>-</Boton>
+					<Boton manejarClic={agregaerInput}>4</Boton>
+					<Boton manejarClic={agregaerInput}> 5</Boton>
+					<Boton manejarClic={agregaerInput}>6</Boton>
+					<Boton manejarClic={agregaerInput}>-</Boton>
 				</div>
 				<div className='fila'>
-					<Boton>7</Boton>
-					<Boton>8</Boton>
-					<Boton>9</Boton>
-					<Boton>*</Boton>
+					<Boton manejarClic={agregaerInput}>7</Boton>
+					<Boton manejarClic={agregaerInput}>8</Boton>
+					<Boton manejarClic={agregaerInput}>9</Boton>
+					<Boton manejarClic={agregaerInput}>*</Boton>
 				</div>
 				<div className='fila'>
-					<Boton>=</Boton>
-					<Boton>0</Boton>
-					<Boton>.</Boton>
-					<Boton>/</Boton>
+					<Boton manejarClic={agregaerInput}>=</Boton>
+					<Boton manejarClic={agregaerInput}>0</Boton>
+					<Boton manejarClic={agregaerInput}>.</Boton>
+					<Boton manejarClic={agregaerInput}>/</Boton>
 				</div>
-				<div className='fila'></div>
+				<div className='fila'>
+					<BotonClear manejarClear={Clear}>Clear
+					</BotonClear>
+				</div>
 			</div>
 		</div>
 	);
